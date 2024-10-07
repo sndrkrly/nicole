@@ -8,5 +8,5 @@ int main( int argc, char *argv[] )
     CWindow* m_pWindow = new CWindow( );
     m_pWindow->Create( "Nicole", 640, 480 );
 
-	return 0;
+    return 0;
 }
