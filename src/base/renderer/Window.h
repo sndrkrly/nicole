@@ -9,8 +9,6 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "../../config.h"
-
 class CWindow 
 {
     public:
