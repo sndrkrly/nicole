@@ -100,28 +100,28 @@ void CWindow::Create( const char *strTitle, int iWidth, int iHeight )
     glDeleteShader( pVertexShader );
     glDeleteShader( pFragmentShader );
 
-    GLfloat aVertices[] =
+    GLfloat aVertices[ ] =
 	{
-		-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, // Lower left corner
-		0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, // Lower right corner
-		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f // Upper corner
+		-0.5f, -0.5f * float( sqrt( 3 ) ) / 3, 0.0f, // lower left corner
+		0.5f, -0.5f * float( sqrt( 3 ) ) / 3, 0.0f, // lower right corner
+		0.0f, 0.5f * float( sqrt( 3 ) ) * 2 / 3, 0.0f // upper corner
 	};
 
     GLuint VAO, VBO;
     
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	glGenVertexArrays( 1, &VAO );
+	glGenBuffers( 1, &VBO );
 
-	glBindVertexArray(VAO);
+	glBindVertexArray( VAO );
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(aVertices), aVertices, GL_STATIC_DRAW);
+	glBindBuffer( GL_ARRAY_BUFFER, VBO );
+	glBufferData( GL_ARRAY_BUFFER, sizeof( aVertices ), aVertices, GL_STATIC_DRAW );
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0 );
+	glEnableVertexAttribArray( 0 );
         
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
+	glBindBuffer( GL_ARRAY_BUFFER, 0 );
+	glBindVertexArray( 0 );
 
     while ( !glfwWindowShouldClose( m_pWindow ) )
     {
@@ -137,9 +137,9 @@ void CWindow::Create( const char *strTitle, int iWidth, int iHeight )
         glfwSwapBuffers( m_pWindow );
     }
 
-    glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteProgram( pShaderProgram);
+    glDeleteVertexArrays( 1, &VAO );  
+    glDeleteBuffers( 1, &VBO );
+    glDeleteProgram( pShaderProgram );
 
     glfwDestroyWindow( m_pWindow );
     glfwTerminate( );

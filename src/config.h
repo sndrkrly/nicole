@@ -1,2 +1,0 @@
-#define FRAMERATE 60.0f
-#define HALFED_FRAMERATE 30.0f
