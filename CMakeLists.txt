@@ -15,15 +15,7 @@ add_executable(nicole
     src/main.cpp
     vendor/include/glad/glad.c
 
-    src/base/renderer/ElementBuffer.cpp
-    src/base/renderer/Shader.cpp
-    src/base/renderer/VertexArray.cpp
-    src/base/renderer/VertexBuffer.cpp
     src/base/renderer/Window.cpp
-
-    src/base/api/GLRenderer.cpp
-
-    src/game/Game.cpp
 )
 
 link_directories(nicole

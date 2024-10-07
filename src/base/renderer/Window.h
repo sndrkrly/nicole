@@ -1,3 +1,5 @@
+/* @author: skif */
+
 #ifndef WINDOW_H
 #define WINDOW_H
 
@@ -15,7 +17,7 @@ class CWindow
         GLFWwindow* m_pWindow;
 
         void Create( const char *strTitle, int iWidth, int iHeight );
-        void Destroy( );
+        void Shutdown( );
 };
 
 #endif /* !WINDOW_H */

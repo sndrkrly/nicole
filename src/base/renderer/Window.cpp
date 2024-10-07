@@ -1,12 +1,11 @@
+/* @author: skif */
+
 #include "Window.h"
-#include "../../game/Game.h"
 
 #ifdef __APPLE__
     #define GL_SILENCE_DEPRECATION
     #define GLFW_INCLUDE_GLCOREARB
 #endif
-
-CGame* m_pGame = new CGame( );
 
 void error_callback( int, const char* strErrorDescription )
 {
@@ -39,7 +38,7 @@ void CWindow::Create( const char *strTitle, int iWidth, int iHeight )
     m_pWindow = glfwCreateWindow( iWidth, iHeight, strTitle, NULL, NULL );
     if ( !m_pWindow )
     {
-        printf( "FATAL ERROR: Couldn't create GLFW window!" );
+        std::cout << "FATAL ERROR: Couldn't create GLFW window!" << std::endl;
 
         glfwTerminate( );
         return;
@@ -67,10 +66,8 @@ void CWindow::Create( const char *strTitle, int iWidth, int iHeight )
 
     std::cout << "\n=====================" << std::endl;
 
-    // glfwSwapInterval( 1 ); /* VSync */
+    glfwSwapInterval( 1 ); /* VSync */
     glViewport( 0, 0, iWidth, iHeight );
-
-    m_pGame->PreLoop( );
 
     while ( !glfwWindowShouldClose( m_pWindow ) )
     {
@@ -78,9 +75,6 @@ void CWindow::Create( const char *strTitle, int iWidth, int iHeight )
         glClear( GL_COLOR_BUFFER_BIT );
 
         float fDeltaTime = 1.0f / FRAMERATE;
-
-        m_pGame->Loop( );
-        m_pGame->UpdateLoop( fDeltaTime );
 
         glDrawElements( GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0 );
         
@@ -94,7 +88,7 @@ void CWindow::Create( const char *strTitle, int iWidth, int iHeight )
     return;
 }
 
-void CWindow::Destroy( )
+void CWindow::Shutdown( )
 {
     if ( m_pWindow )
     {
